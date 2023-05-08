@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "boards", "data-turbo-track": "reload" %>
+
+<div class="d-flex justify-content-center align-items-center">
+  <span>
+    <h2><%= @board.name %></h2>
+    <p><%= @board.email %></p>
+  </span>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mt-3 border-bottom">
+  <span class="d-flex">
+    <p class="fw-bold me-1">Width: </p>
+    <p><%= @board.width %></p>
+  </span>
+
+  <span class="d-flex">
+    <p class="fw-bold me-1">Height: </p>
+    <p><%= @board.height %></p>
+  </span>
+
+  <span class="d-flex">
+    <p class="fw-bold me-1">Number of Mines: </p>
+    <p><%= @board.number_of_mines %></p>
+  </span>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+  <table class="grid-table">
+    <tbody>
+      <% @board.grid.each do |row| %>
+        <tr>
+          <% row.each do |cell| %>
+            <td>
+              <% if cell < 0 %>
+                <span class="mine-cell">💣</span>
+
+              <% else %>
+                <div class="empty-cell"></div>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'boards#new'
 
-  resource :boards, except: :new
+  resources :boards, except: :new
 end
