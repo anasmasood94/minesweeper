@@ -1,0 +1,38 @@
+<h2>
+  Boards List
+</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Width</th>
+      <th scope="col">Height</th>
+      <th scope="col">Number of Mines</th>
+      <th scope="col">Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td>
+          <%= link_to board do %>
+            <%= board.name %>
+          <% end %>
+        </td>
+        <td><%= board.email %></td>
+        <td><%= board.width %></td>
+        <td><%= board.height %></td>
+        <td><%= board.number_of_mines %></td>
+        <td><%= board.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% unless @show_all %>
+  <%= link_to boards_path(all: true) do %>
+    <button type="button" class="btn btn-light">View all Generated Boards</button>
+  <% end %>
+<% end %>
