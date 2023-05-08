@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="mt-4">
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %>" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-header">
+        Create a new Board
+      </div>
+
+      <div class="card-body">
+        <%= form_with model: @board do |form| %>
+          <div class="mb-3">
+            <label for="boardName" class="form-label">Name*</label>
+            <%= form.text_field :name, class: "form-control", id: "boardName", placeholder: "Board Name", required: true %>
+          </div>
+
+          <div class="mb-3">
+            <label for="boardEamil" class="form-label">Email*</label>
+            <%= form.email_field :email, class: "form-control", id: "boardEamil", placeholder: "Email Address", required: true %>
+          </div>
+
+          <div class="mb-3">
+            <label for="boardWidth" class="form-label">Width*</label>
+            <%= form.number_field :width, class: "form-control", id: "boardWidth", placeholder: "Board Width", required: true, min: "1" %>
+          </div>
+
+          <div class="mb-3">
+            <label for="boardHeight" class="form-label">Height*</label>
+            <%= form.number_field :height, class: "form-control", id: "boardHeight", placeholder: "Board Height", required: true, min: "1" %>
+          </div>
+
+          <div class="mb-3">
+            <label for="boardNumberOfMines" class="form-label">Number of mines*</label>
+            <%= form.number_field :number_of_mines, class: "form-control", id: "boardnumberOfMines", placeholder: "Board number of Mines", required: true, min:"1" %>
+          </div>
+
+          <button type="submit" class="btn btn-primary mb-3" name="commit" data-disable-with="Create Board">Generate Board</button>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
