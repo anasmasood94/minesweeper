@@ -13,14 +13,14 @@ class BoardsController < ApplicationController
   end
 
   def create
-    board = Board.new(board_params)
-    if board.save
+    @board = Board.new(board_params)
+    if @board.save
       flash[:success] = 'Board saved successfully'
     else
-      flash[:alert] = board.errors.count > 0 ? board.errors.full_messages.join("<br />").html_safe : 'Unable to save the form'
+      flash[:alert] = @board.errors.count > 0 ? @board.errors.full_messages.join("<br />").html_safe : 'Unable to save the form'
     end
 
-    redirect_to board
+    redirect_to @board
   end
 
   def show
