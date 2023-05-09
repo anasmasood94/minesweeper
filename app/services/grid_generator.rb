@@ -5,6 +5,8 @@ class GridGenerator
   end
 
   def initialize(height, width, number_of_mines)
+    raise ArgumentError, 'Number of mines are greater then the possible value for given board' unless number_of_mines <= height * width
+
     @height = height
     @width = width
     @number_of_mines = number_of_mines
